@@ -143,7 +143,7 @@ venv/
 ENV/
 env.bak/
 venv.bak/
-python_service/
+python_service
 
 # Spyder project settings
 .spyderproject
