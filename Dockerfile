@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 
-ARG PYTHON_VERSION=3.13.0a4
-FROM python:${PYTHON_VERSION}-alpine3.19 as base
+ARG PYTHON_VERSION=3.12.2
+FROM python:${PYTHON_VERSION}-slim AS base
 
 # Prevents Python from writing pyc files.
 ENV PYTHONDONTWRITEBYTECODE=1
@@ -30,7 +30,7 @@ RUN adduser \
 # into this layer.
 RUN --mount=type=cache,target=/root/.cache/pip \
     --mount=type=bind,source=requirements.txt,target=requirements.txt \
-    python -m pip install -r requirements.txt
+    python3 -m pip install -r requirements.txt
 
 # Switch to the non-privileged user to run the application.
 USER appuser
