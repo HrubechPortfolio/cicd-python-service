@@ -4,22 +4,24 @@ import os
 app = Flask(__name__)
 
 # Define the path for the counter file
-COUNTER_FILE = os.path.join(os.path.dirname(__file__), "counter.txt")
+COUNTER_FILE = "/data/counter.txt"
+#COUNTER_FILE = os.path.join(os.path.dirname(__file__), "counter.txt")
 
+"""
 def ensure_counter_file():
-    """
-    Crée le fichier counter.txt si il n'existe pas, avec valeur initiale 0.
-    """
+    # Crée le fichier counter.txt si il n'existe pas, avec valeur initiale 0.
+
     if not os.path.exists(COUNTER_FILE):
         with open(COUNTER_FILE, "w") as f:
             f.write("0")
+"""
 
 def read_counter():
     """
     Reads and returns the current counter value from the file.
     Returns 0 if the file doesn't exist.
     """
-    ensure_counter_file()
+    # ensure_counter_file()
     with open(COUNTER_FILE, "r") as f:
         return int(f.read().strip())
 
@@ -27,7 +29,7 @@ def update_counter(counter):
     """
     Updates the counter file with the new counter value.
     """
-    ensure_counter_file()
+    # ensure_counter_file()
     with open(COUNTER_FILE, "w") as f:
         f.write(str(counter))
 
